@@ -113,9 +113,10 @@ struct SignInView: View {
                     .padding(.horizontal, 40)
                     
                     Button(action: {
+                        isAuthenticated = true
+                        dismiss()
                         if email == "burak@burak.com" && password == "123123" {
-                            isAuthenticated = true
-                            dismiss()
+                            
                         }
                     }) {
                         Text("SIGN IN")

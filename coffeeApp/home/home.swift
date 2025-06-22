@@ -202,6 +202,48 @@ struct HomeView: View {
     }
 }
 
+struct CoffeeCard: View {
+    let coffee: CoffeeItem
+    
+    var body: some View {
+        VStack(spacing: 10) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(Color.brown.opacity(0.1))
+                    .frame(height: 120)
+                
+                Image(systemName: coffee.imageName)
+                    .font(.system(size: 40))
+                    .foregroundColor(.brown)
+            }
+            
+            VStack(spacing: 5) {
+                Text(coffee.name)
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                    .multilineTextAlignment(.center)
+                
+                Text(coffee.price)
+                    .font(.subheadline)
+                    .foregroundColor(.orange)
+                    .fontWeight(.semibold)
+            }
+        }
+        .padding()
+        .background(Color.white)
+        .cornerRadius(15)
+        .shadow(color: .gray.opacity(0.2), radius: 5, x: 0, y: 2)
+    }
+}
+
+struct CoffeeItem {
+    let name: String
+    let imageName: String
+    let price: String
+}
+
+
 struct DessertSlide {
     let title: String
     let subtitle: String
