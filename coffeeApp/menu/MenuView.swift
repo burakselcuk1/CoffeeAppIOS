@@ -16,7 +16,7 @@ struct MenuView: View {
     
     let menuItems: [MenuItem] = [
         
-        MenuItem(id: 1, name: "Americano", category: "Coffee", price: 25.00, image: "cup.and.saucer.fill", description: "Simple espresso and hot water", isPopular: true, rating: 4.5, prepTime: "3-5 min"),
+        MenuItem(id: 1, name: "Americano", category: "Coffee", price: 25.00, image: "cup.and.saucer.fill", description: "Simple espresso and hot water", isPopular: false, rating: 4.5, prepTime: "3-5 min"),
         MenuItem(id: 2, name: "Cappuccino", category: "Coffee", price: 32.00, image: "cup.and.saucer.fill", description: "Espresso, steamed milk and milk foam", isPopular: true, rating: 4.8, prepTime: "4-6 min"),
         MenuItem(id: 3, name: "Latte", category: "Coffee", price: 35.00, image: "cup.and.saucer.fill", description: "Espresso with plenty of steamed milk", isPopular: false, rating: 4.6, prepTime: "4-6 min"),
         MenuItem(id: 4, name: "Mocha", category: "Coffee", price: 38.00, image: "cup.and.saucer.fill", description: "Espresso, chocolate and steamed milk", isPopular: true, rating: 4.7, prepTime: "5-7 min"),

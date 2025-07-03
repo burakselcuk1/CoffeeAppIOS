@@ -18,7 +18,7 @@ struct ProfileView: View {
     )
     
     @State private var showingEditProfile = false
-    @State private var notificationsEnabled = true
+    @State private var notificationsEnabled = false
     @State private var locationEnabled = true
     
     var body: some View {

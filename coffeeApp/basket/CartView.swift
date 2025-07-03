@@ -22,6 +22,8 @@ struct CartView: View {
     @State private var showingCheckout = false
     @State private var showingAddressSelection = false
     @State private var showingPaymentMethods = false
+    @State private var showingInvalidPromoAlert = false
+    @State private var promoErrorMessage = ""
     
     let deliveryFee: Double = 15.00
     let serviceFee: Double = 5.00
@@ -287,6 +289,11 @@ struct CartView: View {
             .background(Color.gray.opacity(0.05))
             .navigationTitle("My Cart")
             .navigationBarTitleDisplayMode(.large)
+            .alert("Invalid Promo Code", isPresented: $showingInvalidPromoAlert) {
+                Button("OK", role: .cancel) { }
+            } message: {
+                Text("Please check your promo code and try again.")
+            }
             .sheet(isPresented: $showingCheckout) {
                 CheckoutView(total: total, deliveryOption: deliveryOption)
             }
@@ -315,8 +322,15 @@ struct CartView: View {
     }
     
     private func applyPromoCode() {
-        if promoCode.lowercased() == "coffee10" {
+        let trimmedCode = promoCode.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        
+        if trimmedCode == "coffee10" {
             isPromoApplied = true
+            promoErrorMessage = ""
+        } else {
+            isPromoApplied = false
+            promoErrorMessage = "Invalid promo code"
+            showingInvalidPromoAlert = true
         }
     }
 }
@@ -446,7 +460,7 @@ struct DeliveryOptionRow: View {
                 }
                 
                 Spacer()
-                
+                 
                 Image(systemName: selectedOption == option ? "checkmark.circle.fill" : "circle")
                     .font(.title2)
                     .foregroundColor(selectedOption == option ? .orange : .gray)
